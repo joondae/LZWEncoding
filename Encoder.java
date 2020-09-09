@@ -4,7 +4,7 @@ public class Encoder{
 	private static String fileInput = null;
 	private static String fileName;
 	
-	public static void Encode_string(String inputString) throws IOException {
+	public void Encode (String inputString) throws IOException {
 
 		HashMap<String, Integer> table = new HashMap<String, Integer>();
 		int tableSize=255;
@@ -15,7 +15,7 @@ public class Encoder{
 		String temp = ""; //will be used to cycle through inputString
 		ArrayList<Integer> encodedValues = new ArrayList<Integer>(); //key of encoded characters
 
-		for (char start : inputString.toCharArray()) {
+		for (char start : inputString.toCharArray()) { //converts the input into a array of chars and cycles through it
 			String symbol = temp + start;
 			if (table.containsKey(symbol)){ //checks to see if the symbol is already in the table
 				temp = symbol;
@@ -26,10 +26,10 @@ public class Encoder{
 			}
 		}
 
-		if (!temp.equals("")) //making sure the last symbol doesn't get skipped
+		if (!temp.equals("")&&!table.containsKey(temp)) //making sure the last symbol doesn't get skipped
 			encodedValues.add(table.get(temp));
 		
-		CreateLZWfile(encodedValues); 
+		CreateFile(encodedValues); 
 		
 	}
 }
