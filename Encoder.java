@@ -1,7 +1,6 @@
 import java.util.*;
 import java.io.*;
 public class Encoder{
-	private static String fileInput = null;
 	private static String fileName;
 	
 	public void Encode (String inputString) throws IOException {
@@ -29,7 +28,6 @@ public class Encoder{
 		if (!temp.equals("")&&!table.containsKey(temp)) //making sure the last symbol doesn't get skipped
 			encodedValues.add(table.get(temp));
 		
-		CreateFile(encodedValues); 
 		
 	}
 }
