@@ -2,14 +2,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.ArrayList;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Encoder
 {
 private static String fileName;
 	
-	public void Encode (String inputString) throws IOException {
+	public void Encode (String inputString) throws FileNotFoundException {
 
 		HashMap<String, Integer> table = new HashMap<String, Integer>();
 		int tableSize=255;
@@ -36,7 +39,7 @@ private static String fileName;
 		
 		
 	}
-	public static void main(String[]args) throws FileNotFoundException
+	public static void main(String[]args) throws IOException
 	{
 		Encoder en = new Encoder();
 		en.Encode("LZW.txt");
