@@ -6,6 +6,7 @@ public class Encoder{
 	public void Encode (String inputString) throws IOException {
 
 		HashMap<String, Integer> table = new HashMap<String, Integer>();
+		int max=500; //maximum hashmap size
 		int tableSize=255;
 		for (int i = 0; i < 255 ; i++){
 			table.put("" + (char) i, i); //pre-fills the hashmap with ascii characters
@@ -20,7 +21,9 @@ public class Encoder{
 				temp = symbol;
 			}else{
 				encodedValues.add(table.get(temp)); //if the symbol isn't in the table it is added
-				table.put(symbol,tableSize++);
+				if (tableSize<max){
+					table.put(symbol,tableSize++);
+				}
 				temp = "" + start;
 			}
 		}
