@@ -11,14 +11,10 @@ import java.util.HashMap;
 public class Encoder
 {
 private static String fileName;
+//private String input="";
 private ArrayList<Integer> encodedValues = new ArrayList<Integer>(); //key of encoded characters
 public void Encode (String inputString) throws IOException {
 	
-	BufferedReader br = new BufferedReader(new FileReader("LZW.txt"));
-	for(int i = 0; i<"LZW.txt".length();i++)
-	{
-		inputString +="LZW.txt".substring(i, i+1);
-	}
 	HashMap<String, Integer> table = new HashMap<String, Integer>();
 	int max=500; //maximum hashmap size
 	int tableSize=255;
@@ -45,8 +41,9 @@ public void Encode (String inputString) throws IOException {
 
 	if (!temp.equals("")&&!table.containsKey(temp)) //making sure the last symbol doesn't get skipped
 		encodedValues.add(table.get(temp));
+
 	
-	
+	createFile("LZW.txt");
 }
 	public void createFile(String inputFile) throws IOException
 	{
@@ -58,11 +55,27 @@ public void Encode (String inputString) throws IOException {
 		}
 		
 	}
+	// public String ConvertToString() throws IOException{
+
+	// 	BufferedReader br = new BufferedReader(new FileReader("LZW.txt"));
+	// 	int temp;
+	// 	while ((temp=br.read())!=-1){
+	// 		input+=(char)temp;
+	// 	}
+	// 	return input;
+	// }
 	
 	public static void main(String[]args) throws IOException
 	{
 		Encoder en = new Encoder();
-		en.createFile("LZW.txt");
+		BufferedReader br = new BufferedReader(new FileReader("LZW.txt"));
+		int temp;
+		String input="";
+		while ((temp=br.read())!=-1){
+			input+=(char)temp;
+		}
+		en.Encode(input);
+		
 	}
 		
 }
