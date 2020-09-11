@@ -63,5 +63,3 @@ public void Encode (String inputString) throws IOException {
 	}
 		
 }
-		
-	
