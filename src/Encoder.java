@@ -11,8 +11,7 @@ import java.util.HashMap;
 public class Encoder
 {
 private static String fileName;
-private static int test=0;
-private static String input="";
+//private String input="";
 private ArrayList<Integer> encodedValues = new ArrayList<Integer>(); //key of encoded characters
 public void Encode (String inputString) throws IOException {
 	
@@ -43,7 +42,6 @@ public void Encode (String inputString) throws IOException {
 	if (!temp.equals("")&&!table.containsKey(temp)) //making sure the last symbol doesn't get skipped
 		encodedValues.add(table.get(temp));
 
-	test=encodedValues.get(0);
 	
 	createFile("LZW.txt");
 }
@@ -57,20 +55,26 @@ public void Encode (String inputString) throws IOException {
 		}
 		
 	}
-	public void convertToString() throws IOException{
+	// public String ConvertToString() throws IOException{
 
-		BufferedReader br = new BufferedReader(new FileReader("LZW.txt"));
-		int temp;
-		while ((temp=br.read())!=-1){
-			input+=(char)temp;
-		}
-	}
+	// 	BufferedReader br = new BufferedReader(new FileReader("LZW.txt"));
+	// 	int temp;
+	// 	while ((temp=br.read())!=-1){
+	// 		input+=(char)temp;
+	// 	}
+	// 	return input;
+	// }
 	
 	public static void main(String[]args) throws IOException
 	{
 		Encoder en = new Encoder();
+		BufferedReader br = new BufferedReader(new FileReader("LZW.txt"));
+		int temp;
+		String input="";
+		while ((temp=br.read())!=-1){
+			input+=(char)temp;
+		}
 		en.Encode(input);
-		System.out.print(test);
 		
 	}
 		
