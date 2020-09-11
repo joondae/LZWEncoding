@@ -18,9 +18,9 @@ public void Encode (String inputString) throws IOException {
 	
 	HashMap<String, Integer> table = new HashMap<String, Integer>();
 	int max=500; //maximum hashmap size
-	int tableSize=255;
+	int tableSize=256;
 	
-	for (int i = 0; i < 255 ; i++){
+	for (int i = 0; i < 256 ; i++){
 		table.put("" + (char) i, i); //pre-fills the hashmap with ascii characters
 	}
 
@@ -40,7 +40,7 @@ public void Encode (String inputString) throws IOException {
 		}
 	}
 
-	if (!temp.equals("")&&!table.containsKey(temp)) //making sure the last symbol doesn't get skipped
+	if (!temp.equals("")) //making sure the last symbol doesn't get skipped
 		encodedValues.add(table.get(temp));
 
 	
@@ -52,7 +52,7 @@ public void Encode (String inputString) throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter("LZW" + inputFile));
 		for(int i = 0;i<encodedValues.size();i++)
 		{
-			bw.write(encodedValues.get(i));
+			bw.append("" + encodedValues.get(i) + " ");
 		}
 		bw.close();
 		
