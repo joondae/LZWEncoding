@@ -1,11 +1,3 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.*;
 import java.io.*;
 
@@ -46,7 +38,7 @@ public void Encode (String inputString) throws IOException {
 	
 	createFile("LZW.txt");
 }
-	public void createFile(String inputFile) throws IOException
+	public void createFile(String inputFile) throws IOException //creates a new file and outputs the encoded values
 	{
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter("LZW" + inputFile));
@@ -58,7 +50,7 @@ public void Encode (String inputString) throws IOException {
 		
 	}
 	
-	public static void main(String[]args) throws IOException
+	public static void main(String[]args) throws IOException //runs it
 	{
 		Encoder en = new Encoder();
 		BufferedReader br = new BufferedReader(new FileReader("LZW.txt"));
