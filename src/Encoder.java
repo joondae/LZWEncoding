@@ -6,12 +6,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.*;
+import java.io.*;
 
 
 public class Encoder
 {
 private static String fileName;
-//private String input="";
 private ArrayList<Integer> encodedValues = new ArrayList<Integer>(); //key of encoded characters
 public void Encode (String inputString) throws IOException {
 	
@@ -48,22 +49,14 @@ public void Encode (String inputString) throws IOException {
 	public void createFile(String inputFile) throws IOException
 	{
 		
-		PrintWriter pw = new PrintWriter(new File("LZW" + inputFile));
+		BufferedWriter bw = new BufferedWriter(new FileWriter("LZW" + inputFile));
 		for(int i = 0;i<encodedValues.size();i++)
 		{
-			pw.write(encodedValues.get(i));
+			bw.write(encodedValues.get(i));
 		}
+		bw.close();
 		
 	}
-	// public String ConvertToString() throws IOException{
-
-	// 	BufferedReader br = new BufferedReader(new FileReader("LZW.txt"));
-	// 	int temp;
-	// 	while ((temp=br.read())!=-1){
-	// 		input+=(char)temp;
-	// 	}
-	// 	return input;
-	// }
 	
 	public static void main(String[]args) throws IOException
 	{
