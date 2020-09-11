@@ -1,7 +1,6 @@
+//Nathan Thomas and Grant Bishop
 import java.util.*;
 import java.io.*;
-
-
 public class Encoder
 {
 private static String fileName;
