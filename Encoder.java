@@ -1,5 +1,5 @@
 //Nathan Thomas and Grant Bishop
-//Improvements by Maya Doyle and Anneliese Ardizzone ʕ•́ᴥ•̀ʔ
+//Improvements by Maya Doyle and Anneliese Ardizzone ʕ•́ᴥ•̀ʔb
 import java.util.*;
 import java.io.*;
 
