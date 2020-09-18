@@ -51,13 +51,16 @@ public class Encoder{
 
 	//--------------------------------------------------------------------------------------------------------------------
 	
-	//The below method creates a new file called "LZW" + original file name and writes each Integer in encodedValue to it. inputFile is fileName
+	//The below method writes each Integer in encodedValue to encodedFile.txt
 	public void createFile(String inputFile) throws IOException{	
-		BufferedWriter bw = new BufferedWriter(new FileWriter("LZW" + inputFile));
+		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("encodedFile.txt"));
 		for(int i = 0; i < encodedValues.size(); i++)
 		{
 			bw.append("" + encodedValues.get(i) + " ");
 		}
+		
+		System.out.println(encodedValues.size());
+		
 		bw.close();	
 	}
 
