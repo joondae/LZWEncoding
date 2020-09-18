@@ -61,7 +61,6 @@ public class Encoder{
 		bw.close();	
 	}
 
-
 	//--------------------------------------------------------------------------------------------------------------------
 	
 	public static void main(String[]args) throws IOException{ //The below code runs the other methods.
