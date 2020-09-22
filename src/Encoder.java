@@ -53,7 +53,7 @@ public class Encoder{
 	
 	//The below method writes each Integer in encodedValue to encodedFile.txt
 	public void createFile(String inputFile) throws IOException{	
-		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("encodedFile.txt"));
+		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("encodedFile.txt")));
 		for(int i = 0; i < encodedValues.size(); i++)
 		{
 			bw.append("" + encodedValues.get(i) + " ");
@@ -79,6 +79,6 @@ public class Encoder{
 			input+=(char)temp;
 		}
 		en.Encode(input);
-	}
 		
+	}
 }
