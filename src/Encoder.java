@@ -52,6 +52,8 @@ public class Encoder{
 	//--------------------------------------------------------------------------------------------------------------------
 	
 	//The below method writes each Integer in encodedValue to encodedFile.txt
+	//and prints codestream size, original and encoded file sizes (bytes),
+	//compression ratio, and space savings
 	public void printCodestreamAndStatistics(String inputFile) throws IOException{
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("encodedFile.txt")));
 		for(int i = 0; i < encodedValues.size(); i++)
@@ -65,15 +67,10 @@ public class Encoder{
 		
 		File encodedFile = new File("encodedFile.txt");
 		File originalFile = new File(fileName);
-		if(encodedFile.exists() && originalFile.exists()) {
-			System.out.println("\nOld file size (bytes): " + originalFile.length());
-			System.out.println("Encoded file size (bytes): " + encodedFile.length());
-			System.out.println("\nCompression ratio: " + ((double) originalFile.length()/encodedFile.length()));
-			System.out.println("Space savings: " + (1 - ((double) encodedFile.length()/originalFile.length())));
-		}
-		else {
-			System.out.println("foo");
-		}
+		System.out.println("\nOriginal file size (bytes): " + originalFile.length());
+		System.out.println("Encoded file size (bytes): " + encodedFile.length());
+		System.out.println("\nCompression ratio: " + ((double) originalFile.length()/encodedFile.length()));
+		System.out.println("Space savings: " + (1 - ((double) encodedFile.length()/originalFile.length())));
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------
