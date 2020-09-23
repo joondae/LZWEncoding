@@ -19,7 +19,7 @@ public class Decoder{
 
 		//Getting encoded file name from user
 		Scanner keyboard = new Scanner(System.in);
-    	System.out.print ("Please give me the name of the file you wish to encode: ");
+    	System.out.print ("Enter file name/path for decoding: ");
     	encodedFileName = keyboard.nextLine();
 
     	//Reading in the encoded file's contents to a string
