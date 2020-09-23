@@ -45,34 +45,46 @@ public class Encoder{
 			encodedValues.add(dictionary.get(temp));
 
 		//The below creates a new file called fileName
-		createFile(fileName);
+		printCodestreamAndStatistics(fileName);
 	}
 
 
 	//--------------------------------------------------------------------------------------------------------------------
 	
 	//The below method writes each Integer in encodedValue to encodedFile.txt
-	public void createFile(String inputFile) throws IOException{	
+	public void printCodestreamAndStatistics(String inputFile) throws IOException{
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("encodedFile.txt")));
 		for(int i = 0; i < encodedValues.size(); i++)
 		{
 			bw.append("" + encodedValues.get(i) + " ");
 		}
 		
-		System.out.println(encodedValues.size());
+		bw.close();
 		
-		bw.close();	
+		System.out.println("codstream size: " + encodedValues.size());
+		
+		File encodedFile = new File("encodedFile.txt");
+		File originalFile = new File(fileName);
+		if(encodedFile.exists() && originalFile.exists()) {
+			System.out.println("\nOld file size (bytes): " + originalFile.length());
+			System.out.println("Encoded file size (bytes): " + encodedFile.length());
+			System.out.println("\nCompression ratio: " + ((double) originalFile.length()/encodedFile.length()));
+			System.out.println("Space savings: " + (1 - ((double) encodedFile.length()/originalFile.length())));
+		}
+		else {
+			System.out.println("foo");
+		}
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------
 	
 	public static void main(String[]args) throws IOException{ //The below code runs the other methods.
 		Scanner keyboard = new Scanner(System.in);
-    	System.out.print ("Please give me the name of the file you wish to encode: ");
+    	System.out.print ("Enter file name/path for encoding: ");
     	fileName = keyboard.nextLine();
 
 		Encoder en = new Encoder();
-		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
 		int temp;
 		String input="";
 		while ((temp=br.read())!=-1){
