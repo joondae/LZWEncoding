@@ -92,11 +92,11 @@ public class Encoder{
 		Encoder en = new Encoder();
 		BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
 		int temp;
-		String input="";
+		StringBuffer input = new StringBuffer();
 		while ((temp=br.read())!=-1){
-			input+=(char)temp;
+			input.append((char)temp);
 		}
-		en.Encode(input);
+		en.Encode(input.toString());
 		
 	}
 }
