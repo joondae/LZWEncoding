@@ -1,7 +1,16 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
 //Nathan Thomas and Grant Bishop
 //Improvements by Maya Doyle and Anneliese Ardizzone ʕ•́ᴥ•̀ʔb
-import java.util.*;
-import java.io.*;
+
 
 public class Encoder{
 	private static String fileName; //This variable is the name of the file.
