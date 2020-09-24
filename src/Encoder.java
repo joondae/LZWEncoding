@@ -43,7 +43,7 @@ public class Encoder{
 					dictionary.put(symbol,dictionarySize++); 
 				}
 				else{ //If the dictionary is full, the below line is printed to alert the user.
-					System.out.println ("Dictionary is full. Errors may occur.");
+					System.out.println ("Dictionary is full. Stopping compression.");
 				}
 				temp = "" + start;
 			}
