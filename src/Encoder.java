@@ -16,9 +16,19 @@ public class Encoder{
 	private static String fileName;
 	private final int maxDictionarySize = 512;
 
+	public Encoder(String fileToEncodeName) {
+		fileName = fileToEncodeName;
+	}
+	
 	//This method contains all helper methods used to encode given file
 	public void encode () {
-		printStatistics(createCodestream(initializeDictionary()));
+		long startTime = System.nanoTime();
+		ArrayList<Integer> codestream = createCodestream(initializeDictionary());
+		long endTime = System.nanoTime();
+		long duration = endTime - startTime;
+		
+		printStatistics(codestream);
+		System.out.println("Encoding execution time (milliseconds): " + duration/1000000);
 	}
 
 	//This method initializes the dictionary with ASCII characters whose decimal values range from 0-255
@@ -66,7 +76,7 @@ public class Encoder{
 			
 			//accounts for last read
 			codestream.add(dictionary.get(previous));
-			bw.write(dictionary.get(previous) + "");
+			bw.write(dictionary.get(previous) + " ");
 			
 			//if dictionary size reaches its limit, print error message and stop compression
 			if(dictionary.size() >= maxDictionarySize) {
@@ -94,28 +104,13 @@ public class Encoder{
 	//and prints codestream size, original and encoded file sizes (bytes),
 	//compression ratio, and space savings
 	public void printStatistics(ArrayList<Integer> codestream) {
-		System.out.println("\n\"Statistics\":\ncodestream size: " + codestream.size());
+		System.out.println("\n\"Encoding Statistics\":\ncodestream size: " + codestream.size());
 		
 		File encodedFile = new File("encodedFile.txt");
 		File originalFile = new File(fileName);
 		System.out.println("\nOriginal file size (bytes): " + originalFile.length());
 		System.out.println("Encoded file size (bytes): " + encodedFile.length());
 		System.out.println("\nCompression ratio: " + ((double) originalFile.length()/encodedFile.length()));
-		System.out.println("Space savings: " + (1 - ((double) encodedFile.length()/originalFile.length())));
-	}
-	
-	//Main method
-	public static void main(String[]args) {
-		Scanner keyboard = new Scanner(System.in);
-		System.out.print ("Enter file name/path for encoding: ");
-    	fileName = keyboard.next();
-    	
-    	long startTime = System.nanoTime();
-    	
-		Encoder en = new Encoder();
-    	en.encode();
-    	
-    	long endTime = System.nanoTime();
-    	System.out.print("\nEncoding execution time (milliseconds): " + (endTime - startTime));
+		System.out.println("Space savings: " + (1 - ((double) encodedFile.length()/originalFile.length())) + "\n\n");
 	}
 }
