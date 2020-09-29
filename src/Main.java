@@ -9,15 +9,15 @@ public class Main {
 	    fileToEncodeName = keyboard.next();
 	    keyboard.close();
 	    
-	    //Running encoding algorithm and printing statistics and execution time
+	    //Runs encoding algorithm and prints statistics and execution time
 	    Encoder e = new Encoder(fileToEncodeName);
 	    e.encode();
 		
-	    //Running decoding algorithm and printing execution time
+	    //Runs decoding algorithm and prints execution time
 	    Decoder d = new Decoder("encodedFile.txt");
 	  	d.decode();
 	  	
-	  	//Ensuring compression and decompression is lossless
+	  	//Ensures compression and decompression is lossless
 	  	System.out.print("Lossless? " + d.checkDecodedFile(fileToEncodeName, "decodedMessage.txt"));
 	}
 }

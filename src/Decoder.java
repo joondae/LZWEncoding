@@ -17,6 +17,8 @@ public class Decoder{
 		fileName = encodedFileName;
 	}
 	
+	//This method contains all helper methods used to decoded given file
+	//and prints method execution time
 	public void decode() {
 		long startTime = System.nanoTime();
 		writeToFile(decodeCodestream(initializeDictionary(), catalogueCodestream()));
@@ -26,6 +28,7 @@ public class Decoder{
 		System.out.println("Decoding execution time (milliseconds): " + duration/1000000);
 	}
 	
+	//This method initializes the dictionary with ASCII characters whose decimal values range from 0-255
 	private HashMap<Integer, String> initializeDictionary() {
 		HashMap<Integer, String> dictionary = new HashMap<Integer,String>(maxDictionarySize);
 		
@@ -36,6 +39,8 @@ public class Decoder{
 		return dictionary;
 	}
 	
+	//This method reads the encoded file (contains the codestream)
+	//and transfers all codes (Strings) into an ArrayList<Integer>
 	private ArrayList<Integer> catalogueCodestream() {
 		ArrayList<Integer> codestream = new ArrayList<Integer>();
 		
@@ -60,6 +65,7 @@ public class Decoder{
 		return codestream;
 	}
 	
+	//This method decodes the codestream and rebuilds the dictionary
 	private StringBuffer decodeCodestream(HashMap<Integer, String> dictionary, ArrayList<Integer> codestream) {
 		int dictionarySize = 256;
 		String w = "" + (char) (int) codestream.remove(0);
@@ -86,6 +92,7 @@ public class Decoder{
 		return decodedCodestream;
 	}
 	
+	//This method writes the decoded codestream to "decodedMessage.txt"
 	private void writeToFile(StringBuffer decodedCodestream) {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File("decodedMessage.txt")));
@@ -97,6 +104,8 @@ public class Decoder{
 		}
 	}
 	
+	//This method checks the decoded file with the file that was originally encoded
+	//i.e. ensures that compression and decompression was lossless
 	public boolean checkDecodedFile(String fileName1, String fileName2) {
 		try {
 			BufferedReader br1 = new BufferedReader(new FileReader(new File(fileName1)));

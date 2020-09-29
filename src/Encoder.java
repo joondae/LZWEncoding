@@ -21,6 +21,7 @@ public class Encoder{
 	}
 	
 	//This method contains all helper methods used to encode given file
+	//and prints method execution time
 	public void encode () {
 		long startTime = System.nanoTime();
 		ArrayList<Integer> codestream = createCodestream(initializeDictionary());
