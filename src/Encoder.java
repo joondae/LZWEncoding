@@ -16,9 +16,11 @@ public class Encoder{
 	private static String fileName;
 	private final int maxDictionarySize = 512;
 
-	//This method contains all helper methods used to encode file
+	//This method contains all helper methods used to encode given file
 	public void encode () {
-		printStatistics(createCodestream(initializeDictionary()));
+		ArrayList<Integer> codestream = createCodestream(initializeDictionary());
+		//optional helper method (only use when actually converting to bits and using bit shifting)
+		printStatistics(codestream);
 	}
 
 	//This method initializes the dictionary with ASCII characters whose decimal values range from 0-255
@@ -70,7 +72,7 @@ public class Encoder{
 			
 			//if dictionary size reaches its limit, print error message and stop compression
 			if(dictionary.size() >= maxDictionarySize) {
-				System.out.println("Maximum dictionary size reached - stopping compression.");
+				System.out.println("Maximum dictionary size reached");
 				
 				while(br.ready()) {
 					int uncompressedChar = br.read();
