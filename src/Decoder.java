@@ -9,9 +9,7 @@ public class Decoder{
 		String encodedFileName = "";
 		String theStringToOutput = "";
 		ArrayList<String> newDictionary = new ArrayList<String>();
-		int placeInDictionary = 256;
-		String addingToDictionary = "";
-
+		
 		//Pre-filling the dictionary to make later code easier to understand
 		for (int u = 0; u < 256; u++){
 			newDictionary.add("" + (char)(u));
@@ -22,6 +20,8 @@ public class Decoder{
     	System.out.print ("Enter file name/path for decoding: ");
     	encodedFileName = keyboard.nextLine();
 
+    	long startTime = System.nanoTime();
+    	
     	//Reading in the encoded file's contents to a string
     	String encodedFileContents = ""; 
 		try{
@@ -80,8 +80,7 @@ public class Decoder{
 				previousCode = currentCode;
 			}
 
-		//Print the decoded message and write a file containing the decoded numbers.
-		System.out.println("Below is your decoded message. You can also find a file named 'decodedMessage.txt' in the folder containing this Java file.");
+		//Print the decoded message and write a file containing the decoded numbers to decodedMessage.txt.
 		System.out.println(theStringToOutput);
 
 		try {
@@ -92,5 +91,8 @@ public class Decoder{
 		catch (IOException e) {
 			System.out.println("IOException");
 		}
+		
+		long endTime = System.nanoTime(); 
+		System.out.println("Method execution time (milliseconds): " + (endTime - startTime));
 	}
 }
