@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 //Nathan Thomas and Grant Bishop
 //Improvements by Maya Doyle and Anneliese Ardizzone ʕ•́ᴥ•̀ʔb
