@@ -18,9 +18,7 @@ public class Encoder{
 
 	//This method contains all helper methods used to encode given file
 	public void encode () {
-		ArrayList<Integer> codestream = createCodestream(initializeDictionary());
-		//optional helper method (only use when actually converting to bits and using bit shifting)
-		printStatistics(codestream);
+		printStatistics(createCodestream(initializeDictionary()));
 	}
 
 	//This method initializes the dictionary with ASCII characters whose decimal values range from 0-255
@@ -96,7 +94,7 @@ public class Encoder{
 	//and prints codestream size, original and encoded file sizes (bytes),
 	//compression ratio, and space savings
 	public void printStatistics(ArrayList<Integer> codestream) {
-		System.out.println("codestream size: " + codestream.size());
+		System.out.println("\n\"Statistics\":\ncodestream size: " + codestream.size());
 		
 		File encodedFile = new File("encodedFile.txt");
 		File originalFile = new File(fileName);
