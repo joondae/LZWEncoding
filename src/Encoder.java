@@ -110,7 +110,12 @@ public class Encoder{
 		System.out.print ("Enter file name/path for encoding: ");
     	fileName = keyboard.next();
     	
+    	long startTime = System.nanoTime();
+    	
 		Encoder en = new Encoder();
     	en.encode();
+    	
+    	long endTime = System.nanoTime();
+    	System.out.print("\nEncoding execution time (milliseconds): " + (endTime - startTime));
 	}
 }
